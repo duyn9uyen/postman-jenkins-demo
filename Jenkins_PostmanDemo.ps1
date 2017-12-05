@@ -1,4 +1,4 @@
-#Windows Batch Command
+#Windows Batch Command in Jenkins
 #powershell.exe -executionpolicy bypass -command "& '%WORKSPACE%\Jenkins_PostmanDemo.ps1'"
 
 echo "You are in the powershell script now..."
