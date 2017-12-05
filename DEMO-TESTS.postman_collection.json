@@ -1,0 +1,153 @@
+{
+	"info": {
+		"name": "DEMO-TESTS",
+		"_postman_id": "e9af0b96-1791-3518-4a19-ebbf007713bf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET weather by RANDOM city id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"//Saving the response \"name\" value into an environment variable\r",
+							"postman.setEnvironmentVariable(\"CITYNAME\", jsonData.name);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var cityIds = [",
+							"    5206379, // Pittsburgh",
+							"    4440906, // Philadelphia",
+							"    4505716, // Baltimore",
+							"    4160812, // Key West",
+							"    3882428, // Lost Angeles",
+							"    5128638, // New York",
+							"    5809844, // Seattle",
+							"    1723862, // Boston",
+							"    4887398, // Chicago",
+							"    5506956, // Last Vegas",
+							"];",
+							"",
+							"// Get a random number between 1-10",
+							"var randomCityId = Math.floor((Math.random() * 10) + 1);",
+							"",
+							"// Set an environment variable to the value of the random city id from array",
+							"postman.setEnvironmentVariable(\"CITYID\", cityIds[randomCityId])"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?id={{CITYID}}&APPID={{APPID}}",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{CITYID}}",
+							"equals": true
+						},
+						{
+							"key": "APPID",
+							"value": "{{APPID}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET weather by city name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"City Name matches Request'\", function () {\r",
+							"    var contains = false;\r",
+							"\r",
+							"    var cityFromResponse = postman.getEnvironmentVariable(\"CITYNAME\");\r",
+							"    //console.log(cityFromResponse);\r",
+							"    \r",
+							"    if(jsonData.name == cityFromResponse) {\r",
+							"        contains = true;\r",
+							"    }\r",
+							"    else\r",
+							"    {\r",
+							"        console.log(\"Unexpected city\");\r",
+							"    }\r",
+							"    \r",
+							"    pm.expect(contains).to.be.true;\r",
+							"});\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q={{CITYNAME}},us&APPID={{APPID}}",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{CITYNAME}},us",
+							"equals": true
+						},
+						{
+							"key": "APPID",
+							"value": "{{APPID}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
