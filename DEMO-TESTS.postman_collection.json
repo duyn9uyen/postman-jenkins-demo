@@ -21,7 +21,8 @@
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							""
 						]
 					}
 				},
@@ -43,8 +44,8 @@
 							"    5506956, // Last Vegas",
 							"];",
 							"",
-							"// Get a random number between 1-10",
-							"var randomCityId = Math.floor((Math.random() * 10) + 1);",
+							"// Get a random number between 0-9",
+							"var randomCityId = Math.floor((Math.random() * 9) + 1);",
 							"",
 							"// Set an environment variable to the value of the random city id from array",
 							"postman.setEnvironmentVariable(\"CITYID\", cityIds[randomCityId])"
@@ -111,7 +112,6 @@
 							"    pm.expect(contains).to.be.true;\r",
 							"});\r",
 							"\r",
-							"\r",
 							"pm.test(\"Contains object: 'weather'\", function () {\r",
 							"    var contains = false;\r",
 							"    for (var key in jsonData) {\r",
@@ -122,11 +122,11 @@
 							"    pm.expect(contains).to.be.true;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Contains string: 'rain' \", function () {\r",
-							"    var contains = false;\r",
-							"    var expected = \"snow\";\r",
-							"    pm.expect(pm.response.text()).to.include(expected);\r",
-							"});\r",
+							"//pm.test(\"Contains string: 'rain' \", function () {\r",
+							"//    var contains = false;\r",
+							"//    var expected = \"rain\";\r",
+							"//    pm.expect(pm.response.text()).to.not.include(expected);\r",
+							"//});\r",
 							"\r",
 							"pm.test(\"DOES NOT Contain string: 'snow' \", function () {\r",
 							"    var contains = false;\r",
