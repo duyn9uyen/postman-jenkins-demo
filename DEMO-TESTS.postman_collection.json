@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "DEMO-TESTS",
-		"_postman_id": "e9af0b96-1791-3518-4a19-ebbf007713bf",
+		"_postman_id": "15918068-3ba0-bb61-5f65-1d411301f1ae",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -97,7 +97,6 @@
 							"\r",
 							"pm.test(\"City Name matches Request'\", function () {\r",
 							"    var contains = false;\r",
-							"\r",
 							"    var cityFromResponse = postman.getEnvironmentVariable(\"CITYNAME\");\r",
 							"    //console.log(cityFromResponse);\r",
 							"    \r",
@@ -111,7 +110,29 @@
 							"    \r",
 							"    pm.expect(contains).to.be.true;\r",
 							"});\r",
-							""
+							"\r",
+							"\r",
+							"pm.test(\"Contains object: 'weather'\", function () {\r",
+							"    var contains = false;\r",
+							"    for (var key in jsonData) {\r",
+							"       if (key == \"weather\") {\r",
+							"           contains = true;\r",
+							"       }\r",
+							"    }\r",
+							"    pm.expect(contains).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Contains string: 'rain' \", function () {\r",
+							"    var contains = false;\r",
+							"    var expected = \"snow\";\r",
+							"    pm.expect(pm.response.text()).to.include(expected);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"DOES NOT Contain string: 'snow' \", function () {\r",
+							"    var contains = false;\r",
+							"    var expected = \"snow\";\r",
+							"    pm.expect(pm.response.text()).to.not.include(expected);\r",
+							"});"
 						]
 					}
 				}
