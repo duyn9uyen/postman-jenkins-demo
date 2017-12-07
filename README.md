@@ -14,6 +14,9 @@ https://www.getpostman.com/
 4. Test Collection with Newman
 
 5. Install Node.js and Newman on the Jenkins server
+	- https://nodejs.org/en/
+	- https://www.npmjs.com/package/newman
+	- https://jenkins.io/
 
 6. Create build item and add a build Step in Jenkins
 	- PowerShell/Bash command to run Newman
