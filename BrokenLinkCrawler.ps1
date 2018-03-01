@@ -13,9 +13,10 @@ echo "Date: 03/01/18"
 #cd C:\Users\[username]\AppData\Roaming\npm\node_modules\
 cd C:\npm\node_modules\broken-link-checker\bin
 
-[Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding(850)
+# Without this line, the output is unreadable
+[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
 
 #blc $url -rpg
-node blc https://www.pacefoods.com/ -rpg
+node blc https://www.pacefoods.com/ -rpg 
 
 echo "End Powershell script: BrokenLinkCrawler.ps1"
