@@ -19,5 +19,12 @@ $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
 
 #blc $url -rpg
 node blc https://www.pacefoods.com/ -rog 
+#node blc http://unsubscribe.campbellsoupcompany.com/ -rog 
+
+# if no errors are found $LASTEXITCODE == 0, else $LASTEXITCODE == 1
+if($LASTEXITCODE -eq 1) {
+	echo " ---- Broken links found! ---- "
+	exit 1
+}
 
 echo "End Powershell script: BrokenLinkCrawler.ps1"
