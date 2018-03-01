@@ -14,7 +14,8 @@ echo "Date: 03/01/18"
 cd C:\npm\node_modules\broken-link-checker\bin
 
 # Without this line, the output is unreadable
-[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+#[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+$OutputEncoding = New-Object -typename System.Text.UTF8Encoding
 
 #blc $url -rpg
 node blc https://www.pacefoods.com/ -rpg 
