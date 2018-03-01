@@ -18,6 +18,6 @@ cd C:\npm\node_modules\broken-link-checker\bin
 $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
 
 #blc $url -rpg
-node blc https://www.pacefoods.com/ -rpg 
+node blc https://www.pacefoods.com/ -rog 
 
 echo "End Powershell script: BrokenLinkCrawler.ps1"
