@@ -16,6 +16,6 @@ cd C:\npm\node_modules\broken-link-checker\bin
 [Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding(850)
 
 #blc $url -rpg
-blc https://www.pacefoods.com/ -rpg
+node blc https://www.pacefoods.com/ -rpg
 
 echo "End Powershell script: BrokenLinkCrawler.ps1"
